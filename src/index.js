@@ -13,7 +13,7 @@ ReactDOM.render(
 		<BlogNavbar />
 		<Routes>
 			<Route path="/" element={<App />} />
-			<Route path="articles/:articleId" element={<Article />} />
+			<Route path="/article/:articleId" element={<Article />} />
 			<Route
 				path="*"
 				element={<Alert variant="danger">No page found 404</Alert>}
