@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Container, Image } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import useGetArticle from '../hooks/useGetArticle';
@@ -23,7 +23,11 @@ function Article() {
 					<Container>
 						<BlogAuthor />
 						<h2>{state.article.title.rendered}</h2>
-						<p>{state.article.content.rendered}</p>
+						<div
+							dangerouslySetInnerHTML={{
+								__html: state.article.content.rendered,
+							}}
+						/>
 					</Container>
 				</>
 			)}

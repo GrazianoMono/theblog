@@ -2,7 +2,7 @@ import { useReducer } from 'react';
 import articles from '../articles.json';
 
 const initialState = {
-	article: '',
+	article: undefined,
 	error: '',
 };
 
