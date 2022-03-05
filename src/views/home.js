@@ -1,7 +1,7 @@
 import BlogPost from '../components/blogpost';
 import { Container } from 'react-bootstrap';
 import useGetArticles from '../hooks/useGetArticles';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 function Home() {
 	const { state, getArticles } = useGetArticles();
@@ -14,7 +14,6 @@ function Home() {
 		if (str && typeof str === 'string') {
 			// strip script/html tags
 			str = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gim, '');
-			str = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gim, '');
 		}
 
 		return str;
