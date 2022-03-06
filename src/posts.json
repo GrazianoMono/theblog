@@ -1,0 +1,12 @@
+{
+  "post": [
+    {
+      "title": "Titolo post 1",
+      "content": "Contenuto post 1"
+    },
+    {
+      "title": "Titolo post 2",
+      "content": "Contenuto post 2"
+    }
+  ]
+}
