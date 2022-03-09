@@ -5,17 +5,46 @@ backend:
 media_folder: 'src/assets/image/uploads'
 
 collections:
-  - name: "blog"
-    label: "Blog"
-    description: "Upcoming tours and their availability"
-    files:
-      - label: "Posts"
-        name: "posts"
-        file: "src/posts.json"
-        fields:
-          - label: "Post"
-            name: "post"
-            widget: "list"
-            fields:
-              - {label: "Title", name: "title", widget: "text"}
-              - {label: "Contenuto", name: "content", widget: "markdown"}
+  - label: "Posts"
+    name: "posts"
+    folder: "content/posts/"
+    format: json
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Excerpt", name: "excerpt", widget: "markdown"}
+      - label: "Category"
+        name: "category"
+        widget: "relation"
+        collection: "categories"
+        search_fields: ["categoryName"]
+        value_field: "id"
+        display_fields: ["categoryName"]
+      - label: "Author"
+        name: "author"
+        widget: "relation"
+        collection: "authors"
+        search_fields: ["fullName"]
+        value_field: "id"
+        display_fields: ["fullName"]
+  - label: "Authors"
+    name: "authors"
+    folder: "content/authors/"
+    format: json
+    create: true
+    fields:
+      - {label: "Full name", name: "fullName", widget: "string"}
+      - {label: "Thumbnail", name: "thumbnail", widget: "image"}
+      - {label: "Id", name: "id", widget: "string"}
+  - label: "Categories"
+    name: "categories"
+    folder: "content/categories/"
+    format: json
+    create: true
+    fields:
+      - {label: "Name", name: "categoryName", widget: "string"}
+      - {label: "Id", name: 'id', widget: "string"}
