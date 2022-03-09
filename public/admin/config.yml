@@ -37,6 +37,7 @@ collections:
     folder: "content/authors/"
     format: json
     create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {label: "Full name", name: "fullName", widget: "string"}
       - {label: "Thumbnail", name: "thumbnail", widget: "image"}
@@ -46,6 +47,7 @@ collections:
     folder: "content/categories/"
     format: json
     create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {label: "Name", name: "categoryName", widget: "string"}
       - {label: "Id", name: 'id', widget: "number"}
