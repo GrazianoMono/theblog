@@ -1,5 +1,5 @@
 import { useReducer } from 'react';
-import articles from '../articles.json';
+import articles from '../posts.json';
 
 const initialState = {
 	article: undefined,

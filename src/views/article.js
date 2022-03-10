@@ -19,13 +19,15 @@ function Article() {
 				<>
 					<Image
 						fluid
-						src={state.article.img || ImagePlaceHolder}></Image>
+						src={
+							state.article.thumbnail || ImagePlaceHolder
+						}></Image>
 					<Container>
 						<BlogAuthor />
-						<h2>{state.article.title.rendered}</h2>
+						<h2>{state.article.title}</h2>
 						<div
 							dangerouslySetInnerHTML={{
-								__html: state.article.content.rendered,
+								__html: state.article.body,
 							}}
 						/>
 					</Container>

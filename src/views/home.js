@@ -23,14 +23,12 @@ function Home() {
 		<Container>
 			{state.articles &&
 				state.articles.map((article, index) => {
-					const title = decodeHTMLEntities(article.title.rendered);
-					const description = decodeHTMLEntities(
-						article.excerpt.rendered
-					);
+					const title = decodeHTMLEntities(article.title);
+					const description = decodeHTMLEntities(article.excerpt);
 
 					return (
 						<BlogPost
-							key={article.id}
+							key={article.slug}
 							title={title}
 							description={description}
 							link={`/article/${index}`}></BlogPost>
