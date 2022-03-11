@@ -1,47 +1,45 @@
 import { useEffect } from 'react';
 import { Container, Image } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import useGetArticle from '../hooks/useGetArticle';
+import useGetPost from '../hooks/useGetPost';
 import ImagePlaceHolder from '../assets/image/placeHolder.png';
 import BlogAuthor from '../components/blogAutor';
 import useGetAuthor from '../hooks/useGetAuthor';
 
 function Article() {
-	const { state, getArticle } = useGetArticle();
+	const { state, getPost } = useGetPost();
 	const params = useParams();
 	const { authorState, getAuthor } = useGetAuthor();
 
 	useEffect(() => {
-		getArticle(params.articleId);
+		getPost(params.postId);
 	}, []);
 
 	useEffect(() => {
-		if (state.article) {
-			getAuthor(state.article.author - 1);
+		if (state.post) {
+			getAuthor(state.post.author - 1);
 		}
-	}, [state.article]);
+	}, [state.post]);
 
 	return (
 		<Container fluid>
-			{state.article && (
+			{state.post && (
 				<>
 					<Image
 						fluid
-						src={
-							state.article.thumbnail || ImagePlaceHolder
-						}></Image>
+						src={state.post.thumbnail || ImagePlaceHolder}></Image>
 					<Container>
 						{authorState.author && (
 							<BlogAuthor
 								img={authorState.author.thumbnail}
 								author={authorState.author.fullName}
-								dateCreated={state.article.date}
+								dateCreated={state.post.date}
 							/>
 						)}
-						<h2>{state.article.title}</h2>
+						<h2>{state.post.title}</h2>
 						<div
 							dangerouslySetInnerHTML={{
-								__html: state.article.body,
+								__html: state.post.body,
 							}}
 						/>
 					</Container>

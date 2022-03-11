@@ -1,8 +1,8 @@
 import { useReducer } from 'react';
-import articles from '../posts.json';
+import posts from '../posts.json';
 
 const initialState = {
-	articles: [],
+	posts: undefined,
 	error: '',
 };
 
@@ -10,7 +10,7 @@ const reducer = (state, action) => {
 	switch (action.type) {
 		case 'success':
 			return {
-				articles: action.data,
+				posts: action.data,
 			};
 		case 'error':
 			return {
@@ -21,19 +21,19 @@ const reducer = (state, action) => {
 	}
 };
 
-function useGetArticles() {
+function useGetPosts() {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
-	const getArticles = () => {
+	const getPosts = () => {
 		dispatch({ type: 'loading' });
 		try {
-			dispatch({ type: 'success', data: articles });
+			dispatch({ type: 'success', data: posts });
 		} catch (e) {
 			dispatch({ type: 'error', error: e });
 		}
 	};
 
-	return { state, getArticles };
+	return { state, getPosts };
 }
 
-export default useGetArticles;
+export default useGetPosts;

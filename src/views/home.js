@@ -1,13 +1,13 @@
 import BlogPost from '../components/blogpost';
 import { Container } from 'react-bootstrap';
-import useGetArticles from '../hooks/useGetArticles';
+import useGetPosts from '../hooks/useGetPosts';
 import { useEffect } from 'react';
 
 function Home() {
-	const { state, getArticles } = useGetArticles();
+	const { state, getPosts } = useGetPosts();
 
 	useEffect(() => {
-		getArticles();
+		getPosts();
 	}, []);
 
 	const decodeHTMLEntities = (str) => {
@@ -21,17 +21,17 @@ function Home() {
 
 	return (
 		<Container>
-			{state.articles &&
-				state.articles.map((article, index) => {
-					const title = decodeHTMLEntities(article.title);
-					const description = decodeHTMLEntities(article.excerpt);
+			{state.posts &&
+				state.posts.map((post, index) => {
+					const title = decodeHTMLEntities(post.title);
+					const description = decodeHTMLEntities(post.excerpt);
 
 					return (
 						<BlogPost
-							key={article.slug}
+							key={post.slug}
 							title={title}
 							description={description}
-							link={`/article/${index}`}></BlogPost>
+							link={`/post/${index}`}></BlogPost>
 					);
 				})}
 		</Container>
