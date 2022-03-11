@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Article from './views/article';
+import Post from './views/post';
 import { Alert } from 'react-bootstrap';
 import BlogNavbar from './components/blogNavbar';
 
@@ -13,7 +13,7 @@ ReactDOM.render(
 		<BlogNavbar />
 		<Routes>
 			<Route path="/" element={<App />} />
-			<Route path="/post/:postId" element={<Article />} />
+			<Route path="/post/:postId" element={<Post />} />
 			<Route
 				path="*"
 				element={<Alert variant="danger">No page found 404</Alert>}
